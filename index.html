@@ -7,7 +7,7 @@
 
     <style>
         :root {
-            --bg-light: #f7f7f7;
+            --bg-light: #ffffff;
             --bg-dark: #111;
             --text-light: #222;
             --text-dark: #eee;
@@ -32,8 +32,16 @@
             color: var(--text-dark);
         }
 
+        /* Logo */
+        .logo {
+            width: 64px;
+            height: auto;
+            margin: 20px;
+            display: block;
+        }
+
         h1 {
-            margin: 24px 0 0 20px;
+            margin: 0 0 0 20px;
             font-size: 28px;
             font-weight: 600;
             text-align: left;
@@ -45,12 +53,12 @@
             padding: 20px;
             background: var(--panel-light);
             border-radius: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-light);
         }
 
         body.dark-mode .container {
             background: var(--panel-dark);
-            border: 1px solid #333;
+            border: 1px solid var(--border-dark);
         }
 
         #count {
@@ -102,6 +110,9 @@
 </head>
 
 <body>
+    <!-- MicroFoundary Logo -->
+    <img src="IMG_1669.jpeg" alt="MicroFoundary Logo" class="logo" />
+
     <h1>Quick Counter</h1>
 
     <div class="container">
