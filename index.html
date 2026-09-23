@@ -32,15 +32,32 @@
             color: var(--text-dark);
         }
 
-        /* Correct logo sizing — no width constraint */
+        /* Top header with logo + brand */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        body.dark-mode .header {
+            border-bottom: 1px solid var(--border-dark);
+        }
+
         .logo {
-            height: auto;
-            margin: 20px;
+            height: 32px;      /* Match Clarifier-style header logo size */
+            width: auto;
+            margin-right: 10px;
             display: block;
         }
 
+        .brand-name {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
         h1 {
-            margin: 0 0 0 20px;
+            margin: 20px 20px 0 20px;
             font-size: 28px;
             font-weight: 600;
             text-align: left;
@@ -109,8 +126,11 @@
 </head>
 
 <body>
-    <!-- MicroFoundary Logo -->
-    <img src="IMG_1669.jpeg" alt="MicroFoundary Logo" class="logo" />
+    <!-- MicroFoundary header -->
+    <div class="header">
+        <img src="IMG_1669.jpeg" alt="MicroFoundary Logo" class="logo" />
+        <div class="brand-name">MicroFoundary</div>
+    </div>
 
     <h1>Quick Counter</h1>
 
