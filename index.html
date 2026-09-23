@@ -1,1 +1,152 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Counter</title>
+
+    <style>
+        :root {
+            --bg-light: #ffffff;
+            --bg-dark: #111;
+            --text-light: #222;
+            --text-dark: #eee;
+            --panel-light: #ffffff;
+            --panel-dark: #1a1a1a;
+            --button-blue: #0078d4;
+            --button-blue-dark: #005a9e;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        body.dark-mode {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        /* Clean header — NO border */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+        }
+
+        .logo {
+            height: 32px;   /* Matches Clarifier */
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        h1 {
+            margin: 20px 20px 0 20px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        /* Clean container — NO border */
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: var(--panel-light);
+            border-radius: 10px;
+        }
+
+        body.dark-mode .container {
+            background: var(--panel-dark);
+        }
+
+        #count {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 16px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            background: var(--button-blue);
+            color: white;
+        }
+
+        #reset {
+            background: #666;
+        }
+
+        body.dark-mode button {
+            background: var(--button-blue-dark);
+        }
+
+        body.dark-mode #reset {
+            background: #555;
+        }
+
+        .toggle {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Single correct header logo -->
+    <div class="header">
+        <img src="IMG_1669.jpeg" alt="MicroFoundary Logo" class="logo" />
+        <div class="brand-name">MicroFoundary</div>
+    </div>
+
+    <h1>Quick Counter</h1>
+
+    <div class="container">
+        <div id="count">0</div>
+
+        <div class="button-row">
+            <button id="plus">+1</button>
+            <button id="reset">Reset</button>
+        </div>
+
+        <div class="toggle" id="toggle">Toggle Dark Mode</div>
+    </div>
+
+    <script>
+        const countEl = document.getElementById("count");
+        let count = 0;
+
+        document.getElementById("plus").addEventListener("click", () => {
+            count++;
+            countEl.textContent = count;
+        });
+
+        document.getElementById("reset").addEventListener("click", () => {
+            count = 0;
+            countEl.textContent = count;
+        });
+
+        document.getElementById("toggle").addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+    </script>
+</body>
+</html>
