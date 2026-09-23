@@ -13,8 +13,6 @@
             --text-dark: #eee;
             --panel-light: #ffffff;
             --panel-dark: #1a1a1a;
-            --border-light: #ccc;
-            --border-dark: #444;
             --button-blue: #0078d4;
             --button-blue-dark: #005a9e;
         }
@@ -32,20 +30,15 @@
             color: var(--text-dark);
         }
 
-        /* MATCHING CLARIFIER HEADER */
+        /* Clean header — NO border */
         .header {
             display: flex;
             align-items: center;
             padding: 16px 20px;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        body.dark-mode .header {
-            border-bottom: 1px solid var(--border-dark);
         }
 
         .logo {
-            height: 32px;   /* Same visual size as Clarifier */
+            height: 32px;   /* Matches Clarifier */
             width: auto;
             margin-right: 10px;
         }
@@ -61,18 +54,17 @@
             font-weight: 600;
         }
 
+        /* Clean container — NO border */
         .container {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
             background: var(--panel-light);
             border-radius: 10px;
-            border: 1px solid var(--border-light);
         }
 
         body.dark-mode .container {
             background: var(--panel-dark);
-            border: 1px solid var(--border-dark);
         }
 
         #count {
@@ -118,7 +110,7 @@
 </head>
 
 <body>
-    <!-- MATCHING CLARIFIER HEADER -->
+    <!-- Single correct header logo -->
     <div class="header">
         <img src="IMG_1669.jpeg" alt="MicroFoundary Logo" class="logo" />
         <div class="brand-name">MicroFoundary</div>
