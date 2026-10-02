@@ -1,145 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quick Counter</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quick Counter</title>
 
-    <style>
-        :root {
-            --bg-light: #ffffff;
-            --bg-dark: #111;
-            --text-light: #222;
-            --text-dark: #eee;
-            --panel-light: #ffffff;
-            --panel-dark: #1a1a1a;
-            --button-blue: #0078d4;
-            --button-blue-dark: #005a9e;
-        }
+<link rel="stylesheet" href="universal.css">
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-light);
-        }
+<style>
+    :root {
+        --mf-primary: #007AFF;
+        --mf-primary-active: #005FCC;
+        --mf-secondary: #000000;
+        --mf-secondary-active: #222222;
+        --mf-border: #ccc;
+        --mf-text: #000;
+    }
 
-        body.dark-mode {
-            background: var(--bg-dark);
-            color: var(--text-dark);
-        }
+    body {
+        margin: 0;
+        padding: 20px;
+        padding-bottom: 80px; /* ensures content stays above fixed footer */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #ffffff;
+        color: var(--mf-text);
+    }
 
-        /* Clarifier‑exact header spacing */
-        .header {
-            display: flex;
-            align-items: center;
-            padding: 10px 20px; /* Clarifier standard */
-        }
+    .header-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 12px;
+    }
 
-        .logo {
-            height: 32px;
-            width: auto;
-        }
+    .logo {
+        height: 32px;
+        width: auto;
+        object-fit: contain;
+        margin-bottom: 6px;
+    }
 
-        /* Clarifier‑exact title spacing */
-        h1 {
-            margin: 6px 20px 0 20px; /* Clarifier standard */
-            font-size: 28px;
-            font-weight: 600;
-        }
+    .title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
 
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background: var(--panel-light);
-            border-radius: 10px;
-        }
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 500px;
+    }
 
-        body.dark-mode .container {
-            background: var(--panel-dark);
-        }
+    .count-display {
+        font-size: 32px;
+        font-weight: 600;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
-        #count {
-            font-size: 48px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
+    /* Button row */
+    .button-row {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
 
-        .button-row {
-            display: flex;
-            gap: 10px;
-        }
+    button {
+        padding: 10px 16px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        width: auto;
+        flex: 0 0 auto;
+    }
 
-        button {
-            padding: 10px 16px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            background: var(--button-blue);
-            color: white;
-        }
+    .inc-btn {
+        background: var(--mf-primary);
+        color: white;
+    }
+    .inc-btn:active {
+        background: var(--mf-primary-active);
+    }
 
-        #reset {
-            background: #666;
-        }
+    .reset-btn {
+        background: var(--mf-secondary);
+        color: white;
+    }
+    .reset-btn:active {
+        background: var(--mf-secondary-active);
+    }
 
-        body.dark-mode button {
-            background: var(--button-blue-dark);
-        }
+    /* Fixed footer Buy button */
+    .buy-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border-top: 1px solid var(--mf-border);
+        padding: 14px 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        z-index: 999;
+    }
 
-        body.dark-mode #reset {
-            background: #555;
-        }
+    .buy-btn {
+        background: var(--mf-primary);
+        color: white;
+        padding: 10px 16px;
+        font-size: 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-block;
+    }
 
-        .toggle {
-            margin-top: 20px;
-            font-size: 14px;
-            opacity: 0.8;
-            cursor: pointer;
-        }
-    </style>
+    .buy-btn:active {
+        background: var(--mf-primary-active);
+    }
+</style>
 </head>
 
 <body>
 
-    <!-- Correct header: logo ONLY -->
-    <div class="header">
-        <img src="IMG_1741.jpeg" alt="MicroFoundary Logo" class="logo" />
+    <div class="header-row">
+        <img src="IMG_1669.jpeg" class="logo" alt="Quick Counter Logo">
+        <div class="title">Quick Counter</div>
     </div>
-
-    <h1>Quick Counter</h1>
 
     <div class="container">
-        <div id="count">0</div>
+        <div id="countDisplay" class="count-display">0</div>
 
         <div class="button-row">
-            <button id="plus">+1</button>
-            <button id="reset">Reset</button>
+            <button class="inc-btn" id="incBtn">+1</button>
+            <button class="reset-btn" id="resetBtn">Reset</button>
         </div>
-
-        <div class="toggle" id="toggle">Toggle Dark Mode</div>
     </div>
 
-    <script>
-        const countEl = document.getElementById("count");
-        let count = 0;
+    <!-- Fixed footer Buy button -->
+    <div id="buyFooter" class="buy-footer">
+        <a class="buy-btn" href="/Payment/payment.html?tool=QuickCounter">
+            Buy This Tool
+        </a>
+    </div>
 
-        document.getElementById("plus").addEventListener("click", () => {
-            count++;
-            countEl.textContent = count;
-        });
+<script>
+    let count = 0;
 
-        document.getElementById("reset").addEventListener("click", () => {
-            count = 0;
-            countEl.textContent = count;
-        });
+    const countDisplay = document.getElementById("countDisplay");
+    const incBtn = document.getElementById("incBtn");
+    const resetBtn = document.getElementById("resetBtn");
 
-        document.getElementById("toggle").addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-        });
-    </script>
+    incBtn.onclick = () => {
+        count++;
+        countDisplay.textContent = count;
+    };
+
+    resetBtn.onclick = () => {
+        count = 0;
+        countDisplay.textContent = count;
+    };
+
+    /* Ownership logic */
+    const params = new URLSearchParams(window.location.search);
+    const ownership = params.get("perimeter");
+
+    if (ownership === "customerOwned") {
+        const buyFooter = document.getElementById("buyFooter");
+        if (buyFooter) buyFooter.style.display = "none";
+    }
+</script>
+
 </body>
 </html>
