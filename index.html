@@ -1,175 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Quick Counter</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickCounter</title>
 
+<!-- Universal Stylesheet -->
 <link rel="stylesheet" href="universal.css">
 
 <style>
-    :root {
-        --mf-primary: #007AFF;
-        --mf-primary-active: #005FCC;
-        --mf-secondary: #000000;
-        --mf-secondary-active: #222222;
-        --mf-border: #ccc;
-        --mf-text: #000;
-    }
-
     body {
-        margin: 0;
-        padding: 20px;
-        padding-bottom: 80px; /* ensures content stays above fixed footer */
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         background: #ffffff;
-        color: var(--mf-text);
-    }
-
-    .header-row {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: 12px;
-    }
-
-    .logo {
-        height: 32px;
-        width: auto;
-        object-fit: contain;
-        margin-bottom: 6px;
-    }
-
-    .title {
-        font-size: 28px;
-        font-weight: 600;
-        margin-bottom: 12px;
+        margin: 0;
+        font-family: Arial, sans-serif;
     }
 
     .container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        max-width: 500px;
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
     }
 
-    .count-display {
-        font-size: 32px;
-        font-weight: 600;
+    .logo {
+        width: 140px;
+        height: auto;
+        margin: 20px auto;
+        display: block;
+    }
+
+    .header {
+        font-size: 28px;
+        font-weight: bold;
         margin-top: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 25px;
     }
 
-    .button-row {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
+    .counter-display {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 30px 0;
     }
 
-    button {
-        padding: 10px 16px;
-        font-size: 16px;
+    .mf-button {
+        background-color: #0078ff;
+        color: white;
         border: none;
-        border-radius: 6px;
+        padding: 14px 26px;
+        font-size: 18px;
+        border-radius: 8px;
         cursor: pointer;
-        width: auto;
-        flex: 0 0 auto;
+        margin: 10px;
     }
 
-    .inc-btn {
-        background: var(--mf-primary);
-        color: white;
-    }
-    .inc-btn:active {
-        background: var(--mf-primary-active);
-    }
-
-    .reset-btn {
-        background: var(--mf-secondary);
-        color: white;
-    }
-    .reset-btn:active {
-        background: var(--mf-secondary-active);
-    }
-
-    /* Fixed footer Buy button */
-    .buy-footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: #ffffff;
-        border-top: 1px solid var(--mf-border);
-        padding: 14px 20px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        z-index: 999;
-    }
-
-    .buy-btn {
-        background: var(--mf-primary);
-        color: white;
-        padding: 10px 16px;
-        font-size: 16px;
-        border-radius: 6px;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .buy-btn:active {
-        background: var(--mf-primary-active);
+    .mf-button:active {
+        transform: scale(0.97);
     }
 </style>
 </head>
 
 <body>
+<div class="container">
 
-    <div class="header-row">
-        <img src="IMG_1669.jpeg" class="logo" alt="Quick Counter Logo">
-        <div class="title">Quick Counter</div>
-    </div>
+    <!-- Correct Logo File -->
+    <img src="IMG_1741.jpeg" alt="QuickCounter Logo" class="logo">
 
-    <div class="container">
-        <div id="countDisplay" class="count-display">0</div>
+    <div class="header">QuickCounter</div>
 
-        <div class="button-row">
-            <button class="inc-btn" id="incBtn">+1</button>
-            <button class="reset-btn" id="resetBtn">Reset</button>
-        </div>
-    </div>
+    <div id="counter" class="counter-display">0</div>
 
-    <!-- Fixed footer Buy button -->
-    <div id="buyFooter" class="buy-footer">
-        <a class="buy-btn" href="/Payment/payment.html?tool=QuickCounter">
-            Buy This Tool
-        </a>
-    </div>
+    <button class="mf-button" onclick="increment()">Add One</button>
+    <button class="mf-button" onclick="reset()">Reset</button>
+
+</div>
 
 <script>
     let count = 0;
 
-    const countDisplay = document.getElementById("countDisplay");
-    const incBtn = document.getElementById("incBtn");
-    const resetBtn = document.getElementById("resetBtn");
-
-    incBtn.onclick = () => {
+    function increment() {
         count++;
-        countDisplay.textContent = count;
-    };
+        document.getElementById("counter").innerText = count;
+    }
 
-    resetBtn.onclick = () => {
+    function reset() {
         count = 0;
-        countDisplay.textContent = count;
-    };
-
-    /* Ownership logic */
-    const params = new URLSearchParams(window.location.search);
-    const ownership = params.get("perimeter");
-
-    if (ownership === "customerOwned") {
-        const buyFooter = document.getElementById("buyFooter");
-        if (buyFooter) buyFooter.style.display = "none";
+        document.getElementById("counter").innerText = count;
     }
 </script>
 
