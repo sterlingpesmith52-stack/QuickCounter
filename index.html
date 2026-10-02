@@ -15,23 +15,26 @@
         font-family: Arial, sans-serif;
     }
 
-    .topbar {
+    /* Stacked left‑aligned logo + title */
+    .header-block {
         display: flex;
-        align-items: center;
-        gap: 12px;
+        flex-direction: column;
+        align-items: flex-start;
         padding: 20px;
     }
 
     .logo {
-        width: 70px;
+        width: 120px;   /* Larger logo */
         height: auto;
+        margin-bottom: 8px; /* Tight spacing */
     }
 
     .header {
-        font-size: 28px;
+        font-size: 32px;
         font-weight: bold;
         margin: 0;
         padding: 0;
+        text-align: left;
     }
 
     .container {
@@ -66,8 +69,8 @@
 
 <body>
 
-<!-- Left-aligned logo + title with tight spacing -->
-<div class="topbar">
+<!-- Correct stacked header -->
+<div class="header-block">
     <img src="IMG_1741.jpeg" alt="QuickCounter Logo" class="logo">
     <div class="header">QuickCounter</div>
 </div>
