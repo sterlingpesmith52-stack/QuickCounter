@@ -24,9 +24,9 @@
     }
 
     .logo {
-        width: 120px;   /* Larger logo */
+        width: 120px;
         height: auto;
-        margin-bottom: 8px; /* Tight spacing */
+        margin-bottom: 8px;
     }
 
     .header {
@@ -41,13 +41,21 @@
         max-width: 420px;
         margin: 0 auto;
         padding: 20px;
-        text-align: center;
     }
 
     .counter-display {
         font-size: 48px;
         font-weight: bold;
         margin: 30px 0;
+        text-align: center;
+    }
+
+    /* Left‑aligned buttons */
+    .button-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
 
     .mf-button {
@@ -58,7 +66,6 @@
         font-size: 18px;
         border-radius: 8px;
         cursor: pointer;
-        margin: 10px;
     }
 
     .mf-button:active {
@@ -69,7 +76,6 @@
 
 <body>
 
-<!-- Correct stacked header -->
 <div class="header-block">
     <img src="IMG_1741.jpeg" alt="QuickCounter Logo" class="logo">
     <div class="header">QuickCounter</div>
@@ -79,8 +85,10 @@
 
     <div id="counter" class="counter-display">0</div>
 
-    <button class="mf-button" onclick="increment()">Add One</button>
-    <button class="mf-button" onclick="reset()">Reset</button>
+    <div class="button-row">
+        <button class="mf-button" onclick="increment()">Add One</button>
+        <button class="mf-button" onclick="reset()">Reset</button>
+    </div>
 
 </div>
 
