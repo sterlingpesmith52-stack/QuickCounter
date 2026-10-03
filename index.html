@@ -46,7 +46,7 @@
     .counter-display {
         font-size: 48px;
         font-weight: bold;
-        margin: 30px 0;
+        margin: 60px 0; /* Increased spacing */
         text-align: center;
     }
 
@@ -55,7 +55,8 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
+        gap: 18px; /* More spacing between buttons */
+        margin-top: 20px; /* Extra breathing room */
     }
 
     .mf-button {
@@ -69,6 +70,32 @@
     }
 
     .mf-button:active {
+        transform: scale(0.97);
+    }
+
+    /* Fixed footer Buy button */
+    .footer-buy {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        padding: 16px 0;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .footer-buy button {
+        background-color: #0078ff;
+        color: white;
+        border: none;
+        padding: 14px 30px;
+        font-size: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .footer-buy button:active {
         transform: scale(0.97);
     }
 </style>
@@ -90,6 +117,13 @@
         <button class="mf-button" onclick="reset()">Reset</button>
     </div>
 
+</div>
+
+<!-- Fixed Footer Buy Button -->
+<div class="footer-buy">
+    <button onclick="window.location.href='payment.html?tool=QuickCounter'">
+        Buy This Tool
+    </button>
 </div>
 
 <script>
