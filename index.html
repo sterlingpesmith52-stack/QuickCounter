@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QuickCounter</title>
 
-<!-- Universal Stylesheet -->
 <link rel="stylesheet" href="universal.css">
 
 <style>
@@ -15,7 +14,7 @@
         font-family: Arial, sans-serif;
     }
 
-    /* Stacked left‑aligned logo + title */
+    /* Header */
     .header-block {
         display: flex;
         flex-direction: column;
@@ -29,12 +28,17 @@
         margin-bottom: 8px;
     }
 
-    /* MicroFoundary standard title styling (stored rule) */
     .header {
         font-size: 24px;
         font-weight: bold;
         margin: 0;
-        padding: 0;
+        text-align: left;
+    }
+
+    .tagline {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #333;
         text-align: left;
     }
 
@@ -42,41 +46,59 @@
         max-width: 420px;
         margin: 0 auto;
         padding: 20px;
-        padding-bottom: 140px; /* Space above footer */
+        padding-bottom: 140px;
     }
 
-    /* LEFT‑ALIGNED + BOLD COUNTER */
     .counter-display {
         font-size: 48px;
         font-weight: bold;
-        margin: 20px 0 40px 0;
+        margin: 30px 0 40px 0;
         text-align: left;
     }
 
-    /* Left‑aligned buttons */
+    /* Buttons */
     .button-row {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
-        margin-top: 10px;
+        gap: 16px;
+    }
+
+    .primary-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
     }
 
     .mf-button {
-        background-color: #0078ff;
-        color: white;
+        background: #0078ff;
+        color: #ffffff;
         border: none;
-        padding: 14px 26px;
+        border-radius: 12px;
+        padding: 14px 20px;
         font-size: 18px;
-        border-radius: 8px;
+        font-weight: 700;
         cursor: pointer;
     }
 
-    .mf-button:active {
+    .mf-button-secondary {
+        background: #000000;
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        padding: 14px 20px;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .mf-button:active,
+    .mf-button-secondary:active,
+    .footer-buy button:active {
         transform: scale(0.97);
     }
 
-    /* Fixed footer Buy button */
+    /* Footer */
     .footer-buy {
         position: fixed;
         bottom: 0;
@@ -94,12 +116,8 @@
         border: none;
         padding: 14px 30px;
         font-size: 20px;
-        border-radius: 10px;
+        border-radius: 12px;
         cursor: pointer;
-    }
-
-    .footer-buy button:active {
-        transform: scale(0.97);
     }
 </style>
 </head>
@@ -107,22 +125,37 @@
 <body>
 
 <div class="header-block">
-    <img src="IMG_1741.jpeg" alt="QuickCounter Logo" class="logo">
+    IMG_1741.jpeg
     <div class="header">QuickCounter</div>
+    <div class="tagline">
+        Count anything quickly and copy the result.
+    </div>
 </div>
 
 <div class="container">
 
-    <div id="counter" class="counter-display"><strong>0</strong></div>
+    <div id="counter" class="counter-display">0</div>
 
     <div class="button-row">
-        <button class="mf-button" onclick="increment()">Add One</button>
-        <button class="mf-button" onclick="reset()">Reset</button>
+
+        <div class="primary-buttons">
+            <button class="mf-button" onclick="increment()">
+                Add One
+            </button>
+
+            <button class="mf-button" onclick="copyCount()">
+                Copy
+            </button>
+        </div>
+
+        <button class="mf-button-secondary" onclick="resetCounter()">
+            Reset
+        </button>
+
     </div>
 
 </div>
 
-<!-- Fixed Footer Buy Button -->
 <div class="footer-buy">
     <button onclick="window.location.href='payment.html?tool=QuickCounter'">
         Buy This Tool
@@ -130,17 +163,25 @@
 </div>
 
 <script>
-    let count = 0;
+let count = 0;
 
-    function increment() {
-        count++;
-        document.querySelector("#counter strong").innerText = count;
-    }
+function updateDisplay() {
+    document.getElementById("counter").innerText = count;
+}
 
-    function reset() {
-        count = 0;
-        document.querySelector("#counter strong").innerText = count;
-    }
+function increment() {
+    count++;
+    updateDisplay();
+}
+
+function resetCounter() {
+    count = 0;
+    updateDisplay();
+}
+
+function copyCount() {
+    navigator.clipboard.writeText(count.toString());
+}
 </script>
 
 </body>
