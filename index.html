@@ -5,184 +5,170 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QuickCounter</title>
 
-<link rel="stylesheet" href="universal.css">
-
 <style>
-    body {
-        background: #ffffff;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    /* Header */
-    .header-block {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-    }
+body {
+    margin: 0;
+    padding: 16px;
+    padding-bottom: 72px;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #000000;
+}
 
-    .logo {
-        width: 120px;
-        height: auto;
-        margin-bottom: 8px;
-    }
+.logo {
+    width: 70px;
+    height: auto;
+    display: block;
+    margin-bottom: 8px;
+}
 
-    .header {
-        font-size: 24px;
-        font-weight: bold;
-        margin: 0;
-        text-align: left;
-    }
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    margin: 0 0 12px 0;
+}
 
-    .tagline {
-        margin-top: 10px;
-        font-size: 18px;
-        color: #333;
-        text-align: left;
-    }
+.tagline {
+    font-size: 15px;
+    line-height: 1.3;
+    margin-bottom: 16px;
+}
 
-    .container {
-        max-width: 420px;
-        margin: 0 auto;
-        padding: 20px;
-        padding-bottom: 140px;
-    }
+.button-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
 
-    .counter-display {
-        font-size: 48px;
-        font-weight: bold;
-        margin: 30px 0 40px 0;
-        text-align: left;
-    }
+button {
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
-    /* Buttons */
-    .button-row {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
+.action-button {
+    background: #007aff;
+    color: #ffffff;
+}
 
-    .primary-buttons {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-    }
+.secondary-button {
+    background: #000000;
+    color: #ffffff;
+}
 
-    .mf-button {
-        background: #0078ff;
-        color: #ffffff;
-        border: none;
-        border-radius: 12px;
-        padding: 14px 20px;
-        font-size: 18px;
-        font-weight: 700;
-        cursor: pointer;
-    }
+.result-card {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 12px;
+}
 
-    .mf-button-secondary {
-        background: #000000;
-        color: #ffffff;
-        border: none;
-        border-radius: 12px;
-        padding: 14px 20px;
-        font-size: 18px;
-        font-weight: 700;
-        cursor: pointer;
-    }
+.result-label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
 
-    .mf-button:active,
-    .mf-button-secondary:active,
-    .footer-buy button:active {
-        transform: scale(0.97);
-    }
+.result-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;
+}
 
-    /* Footer */
-    .footer-buy {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        padding: 16px 0;
-        text-align: center;
-        border-top: 1px solid #e0e0e0;
-    }
+.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    border-top: 1px solid #d1d5db;
+    padding: 10px 12px;
+}
 
-    .footer-buy button {
-        background-color: #0078ff;
-        color: white;
-        border: none;
-        padding: 14px 30px;
-        font-size: 20px;
-        border-radius: 12px;
-        cursor: pointer;
-    }
+.buy-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    background: #000000;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
 </style>
 </head>
 
 <body>
 
-<div class="header-block">
-    IMG_1741.jpeg
-    <div class="header">QuickCounter</div>
-    <div class="tagline">
-        Count anything quickly and copy the result.
+IMG_1741.jpeg
+
+<h1>QuickCounter</h1>
+
+<div class="tagline">
+    Count anything quickly and copy the result.
+</div>
+
+<div class="result-card">
+    <div class="result-label">
+        Current Count
+    </div>
+
+    <div id="counter" class="result-value">
+        0
     </div>
 </div>
 
-<div class="container">
+<div class="button-row">
+    <button class="action-button" onclick="increment()">
+        Add One
+    </button>
 
-    <div id="counter" class="counter-display">0</div>
+    <button class="action-button" onclick="copyCount()">
+        Copy
+    </button>
 
-    <div class="button-row">
-
-        <div class="primary-buttons">
-            <button class="mf-button" onclick="increment()">
-                Add One
-            </button>
-
-            <button class="mf-button" onclick="copyCount()">
-                Copy
-            </button>
-        </div>
-
-        <button class="mf-button-secondary" onclick="resetCounter()">
-            Reset
-        </button>
-
-    </div>
-
-</div>
-
-<div class="footer-buy">
-    <button onclick="window.location.href='payment.html?tool=QuickCounter'">
-        Buy This Tool
+    <button class="secondary-button" onclick="resetCounter()">
+        Reset
     </button>
 </div>
 
 <script>
 let count = 0;
 
-function updateDisplay() {
-    document.getElementById("counter").innerText = count;
+function updateCounter() {
+    document.getElementById('counter').textContent = count;
 }
 
 function increment() {
     count++;
-    updateDisplay();
+    updateCounter();
 }
 
 function resetCounter() {
     count = 0;
-    updateDisplay();
+    updateCounter();
 }
 
 function copyCount() {
     navigator.clipboard.writeText(count.toString());
 }
 </script>
+
+<div class="footer">
+    payment.html?tool=QuickCounter
+        Buy This Tool
+    </a>
+</div>
 
 </body>
 </html>
