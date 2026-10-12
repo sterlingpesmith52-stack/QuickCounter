@@ -36,15 +36,20 @@ h1 {
 .tagline {
     font-size: 15px;
     line-height: 1.3;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.counter-display {
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 24px;
 }
 
 .button-row {
     display: flex;
     gap: 8px;
-    margin-top: 10px;
     margin-bottom: 16px;
-    flex-wrap: wrap;
 }
 
 button {
@@ -64,24 +69,6 @@ button {
 .secondary-button {
     background: #000000;
     color: #ffffff;
-}
-
-.result-card {
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    padding: 12px;
-}
-
-.result-label {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-.result-value {
-    font-size: 22px;
-    font-weight: 700;
-    color: #000000;
 }
 
 .footer {
@@ -118,14 +105,8 @@ IMG_1741.jpeg
     Count anything quickly and copy the result.
 </div>
 
-<div class="result-card">
-    <div class="result-label">
-        Current Count
-    </div>
-
-    <div id="counter" class="result-value">
-        0
-    </div>
+<div id="counter" class="counter-display">
+    0
 </div>
 
 <div class="button-row">
